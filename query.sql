@@ -85,3 +85,11 @@ select * from users where full_name Ilike 'Tanvir%' or full_name Ilike '%Haque%'
 
 -- select * from bookings where payment_status is null
 select booking_id,user_id,match_id,coalesce (payment_status,'Action Required') as systematic_status from bookings where payment_status is null
+
+
+
+-- Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+
+select b.booking_id,u.full_name,m.fixture,b.total_cost from bookings as b join users as u on u.user_id=b.user_id
+  join matches as m on m.match_id=b.match_id
+
