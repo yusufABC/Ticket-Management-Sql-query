@@ -99,3 +99,12 @@ select b.booking_id,u.full_name,m.fixture,b.total_cost from bookings as b join u
 -- Query 5: Display a comprehensive list of all users and their booking IDs, ensuring that fans who have never bought a ticket are still listed.
 
 select u.user_id,u.full_name,b.booking_id from users as u full join bookings as b on b.user_id=u.user_id
+
+
+
+
+--Query 6: Find all ticket bookings where the total cost is strictly higher than the average cost of all ticket bookings.
+
+
+
+select b.booking_id,b.match_id,b.total_cost from bookings as b where total_cost>(select avg(total_cost) from bookings)
